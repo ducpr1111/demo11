@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .card-title {
+            color: #dc3545;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .form-control:focus {
+            border-color: #28a745;
+            box-shadow: 0px 0px 8px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="display-4">Edit Product</h1>
+    </div>
+
+    <main class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <form action="/product/edit/{{ product._id }}" method="post">
+                        <h2 class="card-title">Edit Product</h2>
+                        <div class="form-group">
+                            <label class="form-label" for="name">Name</label>
+                            <input class="form-control" type="text" name="name" value={{ product.name }} required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="price">Price</label>
+                            <input class="form-control" type="text" name="price" value={{ product.price }} required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="category">Category</label>
+                            <select class="form-control" name="category">
+                                <option value="Bear Brick">Bear Brick</option>
+                                <option value="Animu Figures">Animu Figures</option>
+                                <option value="Collectible Cars">Collectible Cars</option>
+                                <option value="Legos">Legos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            {{!-- <label class="form-label" for="">Image</label>
+                            <img src="/images/{{ product.image }}" width="100" height="100" class="d-block mb-2">
+                            <input class="form-control" type="file" name="image" value={{ product.image }} required>
+                            --}}
+                            <label class="h5 text text-success" for="">Image</label><br>
+                            <img src="/images/{{ product.image }}" width="100" height="100">
+                            <input class="form-control" type="file" name="image" value={{ product.image }} required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="stock">Stock</label>
+                            <input class="form-control" type="number" name="stock" value={{ product.stock }} required
+                                min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <select class="form-control" name="gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Unisex">Unisex</option>
+                            </select>
+                        </div>
+                        <div class="form-group text-center mt-4">
+                            <button class="btn btn-primary" type="submit">Edit Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

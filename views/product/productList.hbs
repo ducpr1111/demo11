@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include your CSS stylesheet and other external stylesheets here if needed -->
+    <link rel="stylesheet" base href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" base href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" base href="/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" base href="/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" base href="/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" base href="/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" base href="/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" base href="/css/style.css" type="text/css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="/product"><img src="/img/atnlogo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="/product">Home</a></li>
+                            <li><a href="/product/add" data-toggle="modal" data-target="#addProductModal">Add
+                                    Product</a></li>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addProductModal" tabindex="-1" role="dialog"
+                    aria-labelledby="addProductModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="addProductModalLabel">Add New Product</h2>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/product/add" method="post" class="card-form">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input class="form-control" type="text" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">Price</label>
+                                        <input class="form-control" type="number" name="price" required min="1"
+                                            step="1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category">Category</label>
+                                        <select class="form-control" name="category">
+                                            <option value="Bear Brick">Bear Brick</option>
+                                            <option value="Animu Figures">Animu Figures</option>
+                                            <option value="Collectible Cars">Collectible Cars</option>
+                                            <option value="Legos">Legos</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image">Image URL</label>
+                                        <input class="form-control" type="file" name="image"
+                                            placeholder="Enter image URL" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="stock">Stock</label>
+                                        <input class="form-control" type="number" name="stock" required min="0"
+                                            max="999" step="1" placeholder="Enter stock quantity here...">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="gender">Gender</label>
+                                        <select class="form-control" name="gender">
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Unisex">Unisex</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group text-center mt-4">
+                                        <input class="btn btn-primary" type="submit" value="Add">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </ul>
+                </nav>
+            </div>
+
+        </div>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+        <section class="categories">
+            <div class="container">
+                <div class="row">
+                    <div class="categories__slider owl-carousel">
+                        <div class="col-lg-3">
+                            <div class="categories__item set-bg" data-setbg="/img/categories/MIBbearbrick.jpg">
+                                <h5><a href="#">Bear Brick</a></h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="categories__item set-bg" data-setbg="/img/categories/lufianimu.png">
+                                <h5><a href="#">Animu Figure</a></h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="categories__item set-bg" data-setbg="/img/categories/lambosian.jpeg">
+                                <h5><a href="#">Collectible Cars</a></h5>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="categories__item set-bg" data-setbg="/img/categories/legos.jpeg">
+                                <h5><a href="#">Legos</a></h5>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="featured spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h2>ATN'S PRODUCT</h2>
+                        </div>
+                        <!-- Search form -->
+                        <form class="mb-4" action="/product/search" method="post">
+                            <div class="input-group">
+                                <input class="form-control" type="search" name="keyword" placeholder="Search by name"
+                                    required>
+                            </div>
+                        </form>
+                        <div class="featured__controls" class="active">
+                            <ul>
+                                <li><a href="/product/category/all" style="color: black;">All</a></li>
+                                <li><a href="/product/category/Bear%20Brick" style="color: black;">Bear Brick</a></li>
+                                <li><a href="/product/category/Animu%20Figures" style="color: black;">Animu Figures</a>
+                                </li>
+                                <li><a href="/product/category/Collectible%20Cars" style="color: black;">Collectible
+                                        Cars</a></li>
+                                <li><a href="/product/category/Legos" style="color: black;">Legos</a></li>
+                            </ul>
+                        </div>
+                        {{! End Category Fil}}
+                        <select class="form-control" onchange="handleSortChange(this)">
+                            <option value="#" disabled selected>Select option to Sort</option>
+                            <option value="/product/sort/price/asc">Sort by Price ascending</option>
+                            <option value="/product/sort/price/desc">Sort by Price descending</option>
+                            <option value="/product/sort/name/asc">Sort by Name ascending</option>
+                            <option value="/product/sort/name/desc">Sort by Name descending</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <!-- Inside your loop that iterates over products -->
+                    {{#each products }}
+                    <div class="col clickable-product {{ category }}">
+                        <div class="card h-100 clickable-product">
+                            <img src="/images/{{ image }}" class="card-img-top" alt="Product Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ name }}</h5>
+                                <p class="card-text">Price: {{ price }}$</p>
+                                <p class="card-text">Category: {{ category }}</p>
+                                <p class="card-text">Stock: {{ stock }}</p>
+                                <p class="card-text">Gender: {{ gender }}</p>
+                                <p class="card-text">Created at: {{ createdAt }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                                    data-target="#editDeleteModal{{ _id }}">Edit</button>
+                                <a href="/product/delete/{{ _id }}" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Modal -->
+                    <div class="col-md-12 modal fade" id="editDeleteModal{{ _id }}" tabindex="-1"
+                        aria-labelledby="editDeleteModalLabel{{ _id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editDeleteModalLabel{{ _id }}">Edit Product</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/product/edit/{{ _id }}" method="post">
+                                        <h2 class="card-title">Edit Product</h2>
+                                        <div class="form-group">
+                                            <label class="form-label" for="name">Name</label>
+                                            <input class="form-control" type="text" name="name" value="{{ name }}"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="price">Price</label>
+                                            <input class="form-control" type="number" name="price" value="{{ price }}"
+                                                required min="1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="category">Category</label>
+                                            <select class="form-control" name="category">
+                                                <option value="Bear Brick">Bear Brick</option>
+                                                <option value="Animu Figures">Animu Figures</option>
+                                                <option value="Collectible Cars">Collectible Cars</option>
+                                                <option value="Legos">Legos</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="h5 text text-success" for="">Image</label><br>
+                                            <img src="/images/{{ image }}" width="100" height="100">
+                                            <input class="form-control" type="file" name="image" value="{{ image }}"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="stock">Stock</label>
+                                            <input class="form-control" type="number" name="stock" value="{{ stock }}"
+                                                required min="0">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="gender">Gender</label>
+                                            <select class="form-control" name="gender">
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Unisex">Unisex</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group text-center mt-4">
+                                            <button class="btn btn-primary" type="submit">Edit Product</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/mixitup.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.clickable-product').hover(function () {
+                var productName = $(this).find('.card-body h5').text();
+                var productPrice = $(this).find('.card-text:eq(0)').text();
+                var productCategory = $(this).find('.card-text:eq(1)').text();
+                var productStock = $(this).find('.card-text:eq(2)').text();
+                var productGender = $(this).find('.card-text:eq(3)').text();
+
+                $('#editDeleteModal .modal-title').text('Edit or Delete: ' + productName);
+                $('#editDeleteModal .modal-body').html(`
+            <form action="/product/edit/{{ _id }}" method="post">
+                <h2 class="card-title">Edit Product</h2>
+                <!-- Edit form fields -->
+                <button class="btn btn-primary" type="submit">Edit Product</button>
+            </form>
+        `);
+            });
+        });
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.category-link').click(function () {
+                var selectedCategory = $(this).attr('value');
+                if (selectedCategory === '*') {
+                    $('.clickable-product').show(); // Show all products
+                } else {
+                    $('.clickable-product').hide(); // Hide all products
+                    $('.' + selectedCategory).show(); // Show products of the selected category
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function handleSortChange(selectElement) {
+            var selectedOption = selectElement.value;
+            if (selectedOption !== "#") {
+                window.location.href = selectedOption;
+            }
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>

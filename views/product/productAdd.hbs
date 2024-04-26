@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Product List</title>
+</head>
+
+<body>
+    <header class="bg-dark text-white text-center py-4">
+        <h1 class="display-4">Our Products</h1>
+    </header>
+    <!-- Styling for the product add form -->
+    <style>
+        .card-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-form label {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .card-form input[type="text"],
+        .card-form input[type="number"],
+        .card-form select {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .card-form input[type="text"]:focus,
+        .card-form input[type="number"]:focus,
+        .card-form select:focus {
+            border-color: #28a745;
+            box-shadow: 0px 0px 8px rgba(40, 167, 69, 0.3);
+        }
+
+        .card-form .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .card-form .btn-primary:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+    </style>
+
+    <div class="container col-md-6 mt-3 mb-3 card card-form">
+        <form action="/product/add" method="post">
+            <h2 class="text-success text-center mt-3 mb-4">Add New Product</h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input class="form-control" type="text" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control" name="category">
+                    <option value="Bear Brick">Bear Brick</option>
+                    <option value="Animu Figures">Animu Figures</option>
+                    <option value="Collectible Cars">Collectible Cars</option>
+                    <option value="Legos">Lego</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="image">Image URL</label>
+                <input class="form-control" type="url" name="image" placeholder="Enter image URL" required>
+            </div>
+
+            <div class="form-group">
+                <label for="stock">Stock</label>
+                <input class="form-control" type="number" name="stock" required min="0" max="999" step="1"
+                    placeholder="Enter stock quantity here...">
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Unisex">Unisex</option>
+                </select>
+            </div>
+
+            <div class="form-group text-center mt-4">
+                <input class="btn btn-primary" type="submit" value="Add">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
